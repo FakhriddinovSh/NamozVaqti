@@ -1,0 +1,60 @@
+.site-header{
+    background-color: var(--main-text-color);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--main-black-color);
+}
+
+.site-header__logo{
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--main-black-color);
+    text-decoration: none;
+}
+
+.site-header__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header__list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.site-header__language{
+    margin: 0 20px;
+}
+
+.site-header__item{
+    position: relative;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.site-header__item:hover{
+    border: 1px solid gray;
+}
+
+.site-header__svg{
+    color: var(--main-black-color);
+}
+
+.site-header__time,
+.site-header__surah
+{
+    margin-left: 5px;
+    font-size: 14px;
+    color: var(--main-black-color);
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+}
+
+.site-header__time:hover,
+.site-header__surah:hover{
+    border-bottom-color: var(--main-black-color);
+}
+

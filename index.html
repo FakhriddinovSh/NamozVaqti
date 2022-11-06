@@ -1,13 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scss Template</title>
+    <title>Quran.uz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
+<body id="body">
+    <!-- Header started -->
+    <header class="site-header">
+        <div class="container">
+            <div class="site-header__wrapper">
+                <div class="site-header__left-wrapper">
+                    <a class="site-header__logo" href="./index.html">
+                        Quran.uz
+                    </a>
+                    <a class="site-header__time" href="#">Namoz vaqti</a>
+                    <a class="site-header__surah" href="#">Suralar</a>
+                </div>
+                
+                <ul class="site-header__list">
+                    <li class="site-header__login site-header__item">
+                        <a class="site-header__svg" href="#">
+                            <svg width="24" height="24" viewBox="0 0 15 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7.5.875a3.625 3.625 0 0 0-1.006 7.109c-1.194.145-2.218.567-2.99 1.328-.982.967-1.479 2.408-1.479 4.288a.475.475 0 1 0 .95 0c0-1.72.453-2.88 1.196-3.612.744-.733 1.856-1.113 3.329-1.113s2.585.38 3.33 1.113c.742.733 1.195 1.892 1.195 3.612a.475.475 0 1 0 .95 0c0-1.88-.497-3.32-1.48-4.288-.77-.76-1.795-1.183-2.989-1.328A3.627 3.627 0 0 0 7.5.875ZM4.825 4.5a2.675 2.675 0 1 1 5.35 0 2.675 2.675 0 0 1-5.35 0Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                        </a>
+                    </li>
+                    <li class="site-header__language site-header__item">
+                        <a class="site-header__svg" href="#">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10ZM2 12h20" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10v0Z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </a>
+                    </li>
+                    <li class="site-header__settings site-header__item">
+                        <a class="site-header__svg" href="#">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.32 7.582a4.044 4.044 0 1 0 4.044 4.043 4.056 4.056 0 0 0-4.043-4.043Zm8.73 4.043c-.002.378-.03.755-.082 1.13l2.46 1.926a.586.586 0 0 1 .134.747l-2.328 4.02a.588.588 0 0 1-.715.248l-2.894-1.162a8.923 8.923 0 0 1-1.962 1.146l-.433 3.072a.603.603 0 0 1-.581.498H9.993a.607.607 0 0 1-.582-.482l-.433-3.072a8.556 8.556 0 0 1-1.962-1.147l-2.893 1.163a.589.589 0 0 1-.715-.249L1.08 15.445a.586.586 0 0 1 .133-.748l2.46-1.926a8.823 8.823 0 0 1-.082-1.146c.002-.378.03-.755.083-1.13L1.213 8.57a.586.586 0 0 1-.133-.747l2.328-4.02a.588.588 0 0 1 .715-.248l2.893 1.162A8.924 8.924 0 0 1 8.978 3.57L9.411.498A.603.603 0 0 1 9.993 0h4.656a.607.607 0 0 1 .582.482l.432 3.072A8.557 8.557 0 0 1 17.628 4.7l2.89-1.163a.588.588 0 0 1 .716.249l2.328 4.019a.586.586 0 0 1-.133.747l-2.461 1.927c.052.38.08.762.083 1.145Z"></path></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Header started -->
     
+    <!-- Main started -->
+    <main class="site-main">
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero__title">Namoz Vaqti</h1>
+                <form class="hero__form" autocomplete="off">
+                    <label class="hero__label">
+                        <input class="hero__input" type="text" placeholder="Viloyatni tanlash" name="user_search">
+                        <span class="hero__search-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m23.5 21.466-7.01-7.01a9.066 9.066 0 0 0 1.736-5.343C18.226 4.088 14.138 0 9.113 0 4.088 0 0 4.088 0 9.113c0 5.025 4.088 9.113 9.113 9.113a9.066 9.066 0 0 0 5.343-1.735l7.01 7.009 2.034-2.034ZM9.113 15.348a6.236 6.236 0 1 1 6.235-6.235 6.243 6.243 0 0 1-6.235 6.235Z"></path></svg>
+                        </span>
+                    </label>
+                </form>
+                
+                <h2 class="hero__title hero__subtitle" style="display: none;">Toshkent</h2>    
+                <ul class="time-format-list" style="display: none;">
+                    <li class="time-format-item time-format-daily">
+                        <p class="time-format-daily">Kunlik</p>
+                    </li>
+                    <li class="time-format-item time-format-weekly">
+                        <p class="time-format-weekly">Haftalik</p>
+                    </li>
+                    <li class="time-format-item time-format-monthly">
+                        <p class="time-format-monthly">Oylik</p>
+                    </li>
+                </ul>
+                
+                <div class="time-list" style="display: none;">
+                    <div class="time-item">
+                        <span class="time-time time-bomdod">00:00</span>
+                        <h3 class="time-name">Bomdod</h3>
+                    </div>
+                    
+                    <div class="time-item">
+                        <span class="time-time time-peshin">00:00</span>
+                        <h3 class="time-name">Peshin</h3>
+                    </div>
+                    
+                    <div class="time-item">
+                        <span class="time-time time-asr">00:00</span>
+                        <h3 class="time-name">Asr</h3>
+                    </div>
+                    
+                    <div class="time-item">
+                        <span class="time-time time-shom">00:00</span>
+                        <h3 class="time-name">Shom</h3>
+                    </div>
+                    
+                    <div class="time-item">
+                        <span class="time-time time-xufton">00:00</span>
+                        <h3 class="time-name">Xufton</h3>
+                    </div>
+                    
+                    <ul class="time-table" style="display: none;">
+                        <li class="time-table-item">
+                            <p class="time-default">Hafta:</p>
+                            <p class="time-default">Sana:</p>
+                            <p class="time-default">Saharlik:</p>
+                            <p class="time-default">Quyosh:</p>
+                            <p class="time-default">Peshin:</p>
+                            <p class="time-default">Asr:</p>
+                            <p class="time-default">Shom:</p>
+                            <p class="time-default">Xufton:</p>
+                        </li>
+                    </ul>
+                    
+                    <ul class="time-table-monthly">
+                        <li class="time-table-monthly-item">
+                            <p class="time-default">Sana:</p>
+                            <p class="time-default">Kun:</p>
+                            <p class="time-default">Saharlik:</p>
+                            <p class="time-default">Quyosh:</p>
+                            <p class="time-default">Peshin:</p>
+                            <p class="time-default">Asr:</p>
+                            <p class="time-default">Shom:</p>
+                            <p class="time-default">Xufton:</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="audio">
+            <div class="container">
+                <ul class="audio__list">
+                    
+                </ul>
+            </div>
+        </section>
+    </main>
+    <!-- Main ended -->
+    
+    <!-- Footer started -->
+    <footer class="site-footer"></footer>
+    <!-- Footer ended -->
+    
+    
+    <!-- Login/Register Modal -->
+    <div class="login">
+        <div class="login-wrap">
+            <button class="login-close" type="button"></button>
+            <h2 class="login-title">Login</h2>
+            <form class="form login-form" autocomplete="off">
+                <input class="login-name" type="text" placeholder="Username" name="user_name"/>
+                <input class="login-password" type="password" placeholder="Password" name="password"/>
+                <button class="login-btn" type="submit">Log in</button>
+                <p class="login-register">Do you have not account? 
+                    <button class="register-btn" type="submit">Register</button>
+                </p>
+            </form>
+            
+            <form class="form register-form" autocomplete="off">
+                <input class="login-name" type="text" placeholder="Name" name="user_name" aria-label="Your Name">
+                <input class="login-name" type="email" placeholder="Email" name="user_name" aria-label="Email">
+                <input class="login-password" type="password" placeholder="Password" name="password"/><input class="login-password" type="password" placeholder="Re-enter Password" name="password"/>
+                <button class="login-btn" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div class="settings">
+        <div class="settings-wrapper">
+            <div class="settings-top">
+                <h2 class="settings-title">Sozlamalar</h2>
+                <button class="settings-button" type="button"></button>
+            </div>
+            <div class="menu">
+                <div class="menu-header">
+                    <h2 class="menu-header-title">Theme</h2>
+                    <div class="theme-switcher">
+                        <input class="theme-switcher-input theme-default" type="radio" id="light-theme" name="themes" checked />
+                        <label class="theme-switcher-label theme-default" for="light-theme">
+                            <span>
+                                <img class="setting-icon" src="./images/icons/sun.svg" width="24" height="24" alt="Sun icon">
+                                Light
+                            </span>
+                        </label>
+                        
+                        <input class="theme-switcher-input theme-moon" type="radio" id="dark-theme" name="themes" />
+                        <label class="theme-switcher-label theme-moon" for="dark-theme">
+                            <span>
+                                <img class="setting-icon" src="./images/icons/moon.png" width="24" height="24" alt="Moon icon">
+                                Dark
+                            </span>
+                        </label>
+                        
+                        <input class="theme-switcher-input theme-star" type="radio" id="black-theme" name="themes" />
+                        <label class="theme-switcher-label theme-star" for="black-theme">
+                            <span>
+                                <img class="setting-icon" src="./images/icons/star.png" width="24" height="24" alt="Star icon">
+                                Black
+                            </span>
+                        </label>
+                        
+                        <span class="slider"></span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="menu">
+                <div class="menu-header">
+                    <h2 class="menu-header-title">Shrift hajmi</h2>
+                    <ul class="font-size">
+                        <li class="font-button "><a class="font-increase" href="#">+</a></li>
+                        <li class="font-button "><a class="font-decrease" href="#">-</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <template class="template">
+        <li class="audio__item">
+            <div class="audio__inner__wrapper">
+                <div class="audio__subwrapper">
+                    <div class="audio__number">
+                        <p class="audio__number__desc">1</p>
+                    </div>
+                    <div>
+                        <h4 class="audio__name">The Opening</h4>
+                        <p class="audio__eng__name">Al-Faatiha</p>
+                    </div>
+                </div>
+                <div class="audio__right-wrapper">
+                    <a class="audio__icon-wrap" href="" target="blank">
+                        <img class="audio__icon" src="./images/icons/play-button.png"
+                        width="30"
+                        height="30"
+                        alt="">
+                    </a>
+                    <div>
+                        <p class="audio__ar-name">سُورَةُ ٱلْفَاتِحَةِ</p>
+                        <p class="audio__ayahs__content">Ayahs<span class="audio__ayahs">7</span></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </template>
+    <script src="./js/main.js"></script>
 </body>
 </html>

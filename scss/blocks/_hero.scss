@@ -1,0 +1,160 @@
+.hero__title{
+    text-align: center;
+    color: var(--main-black-color);
+}
+
+.hero__form{
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero__input{
+    width: 100%;
+    margin: 20px 0;
+    padding: 15px 50px;
+    border: 1px solid rgba(128, 128, 128, 0.623);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.hero__label{
+    position: relative;
+}
+
+.hero__search-icon{
+    position: absolute;
+    left: 23px;
+    top: 3px;
+}
+
+.time-list,
+.time-format-list
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+.time-item{
+    width: 130px;
+    height: 130px;
+    border: 1px solid var(--main-black-color);
+    border-radius: 50%;
+    text-align: center;
+}
+
+.time-item:not(:last-child){
+    margin-right: 80px;
+}
+.time-time{
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 30px;
+    color: var(--main-black-color);
+}
+
+
+
+.time-name{
+    color: var(--main-black-color);
+}
+
+.time-format-list{
+    margin-top: 0;
+}
+
+.time-format-item{
+    width: 100px;
+    text-align: center;
+    border: 1px solid var(--main-black-color);
+    cursor: pointer;
+}
+
+.time-format-item:hover{
+    background-color: rgba(128, 128, 128, 0.562);
+    color: #fff;
+}
+
+.time-format-item--active{
+    background-color: rgb(128, 128, 128);
+    color: #fff;
+}
+
+.time-format-item:first-child{
+    border-radius: 10px 0 0 10px;
+}
+
+.time-format-item:last-child{
+    border-radius: 0 10px 10px 0;
+}
+
+.time-format-weekly,
+.time-format-monthly,
+.time-format-daily
+{
+    color: var(--main-black-color);
+}
+
+// Table
+.time-table,
+.time-table-monthly
+{
+    display: none;
+    margin-bottom: 100px;
+}
+
+.tg{
+    border-spacing:0;
+}
+
+.tg td{
+    border-color:var(--main-black-color);
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+}
+
+.tg th{
+    border-color:var(--main-black-color);
+    border-style:solid;
+    border-width:1px;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    overflow:hidden;
+    padding:20px 25px;
+    word-break:normal;
+}
+
+.tg .tg-387r{
+    border-color:inherit;
+    font-weight: 700;
+}
+
+.tg .tg-0lax{
+    text-align:left;
+    vertical-align:top
+}
+
+.time-default{
+    width: 120px;
+    margin: 0;
+    padding: 10px 0;
+    border: 1px solid var(--main-black-color);
+    text-align: center;
+    color: var(--main-black-color);
+}
+
+.time-table-item,
+.time-table-monthly-item
+{
+    display: flex;
+}
