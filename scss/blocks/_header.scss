@@ -1,4 +1,7 @@
 .site-header{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
     background-color: var(--main-text-color);
     padding: 5px 0;
     border-bottom: 1px solid var(--main-black-color);
@@ -44,7 +47,8 @@
 }
 
 .site-header__time,
-.site-header__surah
+.site-header__surah,
+.site-header__nasheed
 {
     margin-left: 5px;
     font-size: 14px;
@@ -54,7 +58,9 @@
 }
 
 .site-header__time:hover,
-.site-header__surah:hover{
+.site-header__surah:hover,
+.site-header__nasheed:hover
+{
     border-bottom-color: var(--main-black-color);
 }
 

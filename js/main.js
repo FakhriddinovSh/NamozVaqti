@@ -51,6 +51,8 @@ const elTemplate = document.querySelector(".template").content;
 const elAudioList = document.querySelector(".audio__list");
 const newFragment = new DocumentFragment();
 
+// Nasheed 
+const nasheedList = document.querySelector(".nasheed__list");
 
 
 function modalEvents(){
@@ -356,6 +358,7 @@ twoOptionWrapper.addEventListener("click", (evt) => {
         heroTitle.textContent = "Suralar"
         timeForm.style.display = "none"
         elAudioList.style.display = "flex"
+        nasheedList.style.display = "none"
     }else if(evt.target.matches(".site-header__time")){
         heroSubtitle.style.display = "block"
         timeList.style.display = "flex"
@@ -364,6 +367,15 @@ twoOptionWrapper.addEventListener("click", (evt) => {
         heroTitle.textContent = "Namoz vaqti"
         timeForm.style.display = "block"
         timeInput.placeholder = "Viloyatni tanlash"
+        nasheedList.style.display = "none"
+    }else if(evt.target.matches(".site-header__nasheed")){
+        timeForm.style.display = "none"
+        heroTitle.textContent = "Nasheedlar"
+        elAudioList.style.display = "none"
+        timeList.style.display = "none"
+        timeFormatList.style.display = "none"
+        heroSubtitle.style.display = "none"
+        nasheedList.style.display = "flex"
     }
 })
 
@@ -388,7 +400,7 @@ fetch("http://api.alquran.cloud/v1/quran/en.asad")
 
 
 function fetchMonthlyDefault(){
-    fetch("https://islomapi.uz/api/monthly?region=Toshkent&month=11")
+    fetch("https://islomapi.uz/api/monthly?region=Samarqand&month=11")
     .then(res => res.json())
     .then(data => {
         data.forEach(item => {
@@ -493,8 +505,8 @@ function fetchMonth(region){
         liHead.appendChild(headShom);
         liHead.appendChild(headXufton);
         timeTable.appendChild(liHead);
+        timeTableMonthly.innerHTML = "";
         data.forEach(item => {
-            timeTableMonthly.innerHTML = ""
             const itemTimes = item.times;
             
             let liElement = document.createElement("li");

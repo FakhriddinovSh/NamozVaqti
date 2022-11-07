@@ -1,4 +1,6 @@
-.audio__list{
+.audio__list,
+.nasheed__list
+{
     display: flex;
     align-items: center;
     list-style: none;
@@ -6,6 +8,11 @@
     max-width: 1280px;
     justify-content: space-between;
 }
+
+.nasheed__list{
+    display: none;
+}
+
 
 .audio__item{
     width: 100%;
@@ -15,6 +22,10 @@
     border-radius: 10px;
     margin-bottom: 15px;
     cursor: pointer;
+}
+
+.nasheed__item{
+    padding: 15px 25px;
 }
 
 .audio__item:hover{
