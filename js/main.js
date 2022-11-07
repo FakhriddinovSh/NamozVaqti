@@ -51,11 +51,7 @@ const elTemplate = document.querySelector(".template").content;
 const elAudioList = document.querySelector(".audio__list");
 const newFragment = new DocumentFragment();
 
-function Api(value){
-    const API = `https://islomapi.uz/api/present/day?region=${value}`;
-    const API_WEEK = `https://islomapi.uz/api/present/week?region=${value}`
-    const API_MONTH = `https://islomapi.uz/api/monthly?region=${value}&month=11`
-}
+
 
 function modalEvents(){
     // Settings Modal
@@ -105,10 +101,9 @@ modalEvents()
 timeForm.addEventListener("submit", (evt) =>{
     evt.preventDefault();
     const timeInputValue = timeInput.value.trim();
-    Api(timeInputValue);
     fetchTime(timeInputValue);
     fetchWeek(timeInputValue);
-    fetchMonth(timeInputValue);
+    // fetchMonth(timeInputValue);
 })
 
 function fetchTime(region){
@@ -217,62 +212,62 @@ function fetchWeek(region){
         headXufton.classList.add("time-default")
         headXufton.textContent = "Xufton:"
         
-        liHead.appendChild(headWeek)
-        liHead.appendChild(headDate)
-        liHead.appendChild(headMorning)
-        liHead.appendChild(headSun)
-        liHead.appendChild(headPeshin)
-        liHead.appendChild(headAsr)
-        liHead.appendChild(headShom)
-        liHead.appendChild(headXufton)
-        timeTable.appendChild(liHead)
+        liHead.appendChild(headWeek);
+        liHead.appendChild(headDate);
+        liHead.appendChild(headMorning);
+        liHead.appendChild(headSun);
+        liHead.appendChild(headPeshin);
+        liHead.appendChild(headAsr);
+        liHead.appendChild(headShom);
+        liHead.appendChild(headXufton);
+        timeTable.appendChild(liHead);
         data.forEach(item => {
             console.log(item);
             const itemTimes = item.times;
             
             let liElement = document.createElement("li");
-            liElement.classList.add("time-table-item")
-            let day = document.createElement("p")
-            day.textContent = item.weekday
-            day.classList.add("time-default")
+            liElement.classList.add("time-table-item");
+            let day = document.createElement("p");
+            day.textContent = item.weekday;
+            day.classList.add("time-default");
             
-            let date = document.createElement("p")
-            date.textContent = item.date.split(",", 1).join("")
-            date.classList.add("time-default")
+            let date = document.createElement("p");
+            date.textContent = item.date.split(",", 1).join("");
+            date.classList.add("time-default");
             
-            let saharlik = document.createElement("p")
-            saharlik.textContent = itemTimes.tong_saharlik
-            saharlik.classList.add("time-default")
+            let saharlik = document.createElement("p");
+            saharlik.textContent = itemTimes.tong_saharlik;
+            saharlik.classList.add("time-default");
             
-            let sun = document.createElement("p")
-            sun.textContent = itemTimes.quyosh
-            sun.classList.add("time-default")
+            let sun = document.createElement("p");
+            sun.textContent = itemTimes.quyosh;
+            sun.classList.add("time-default");
             
-            let peshin = document.createElement("p")
-            peshin.textContent = itemTimes.peshin
-            peshin.classList.add("time-default")
+            let peshin = document.createElement("p");
+            peshin.textContent = itemTimes.peshin;
+            peshin.classList.add("time-default");
             
-            let asr = document.createElement("p")
+            let asr = document.createElement("p");
             asr.textContent = itemTimes.asr;
-            asr.classList.add("time-default")
+            asr.classList.add("time-default");
             
-            let shom = document.createElement("p")
+            let shom = document.createElement("p");
             shom.textContent = itemTimes.shom_iftor;
-            shom.classList.add("time-default")
+            shom.classList.add("time-default");
             
-            let xufton = document.createElement("p")
+            let xufton = document.createElement("p");
             xufton.textContent = itemTimes.hufton;
-            xufton.classList.add("time-default")
+            xufton.classList.add("time-default");
             
-            liElement.appendChild(day)
-            liElement.appendChild(date)
-            liElement.appendChild(saharlik)
-            liElement.appendChild(sun)
-            liElement.appendChild(peshin)
-            liElement.appendChild(asr)
-            liElement.appendChild(shom)
-            liElement.appendChild(xufton)
-            timeTable.appendChild(liElement)    
+            liElement.appendChild(day);
+            liElement.appendChild(date);
+            liElement.appendChild(saharlik);
+            liElement.appendChild(sun);
+            liElement.appendChild(peshin);
+            liElement.appendChild(asr);
+            liElement.appendChild(shom);
+            liElement.appendChild(xufton);
+            timeTable.appendChild(liElement);    
         });
     })
     .catch(error => console.log(error))
@@ -335,6 +330,123 @@ function fetchWeeklyDefault(){
 fetchWeeklyDefault()
 
 
+
+
+elFontSize.addEventListener("click", (evt) =>{
+    evt.preventDefault();
+    if(evt.target.matches(".font-increase")){
+        size = size + 1
+        body.style.fontSize = size + "px"
+        if(size == 20){
+            size = size - 1
+        }
+    }else if(evt.target.matches(".font-decrease")){
+        size = size - 1
+        body.style.fontSize = size + "px"
+        if(size == 10){
+            size = size + 1
+        }
+    }
+})
+
+twoOptionWrapper.addEventListener("click", (evt) => {
+    if(evt.target.matches(".site-header__surah")){
+        heroSubtitle.style.display = "none"
+        timeList.style.display = "none"
+        timeFormatList.style.display = "none"
+        heroTitle.textContent = "Suralar"
+        timeInput.placeholder = "Suralarni qidirish"
+        elAudioList.style.display = "flex"
+    }else if(evt.target.matches(".site-header__time")){
+        heroSubtitle.style.display = "block"
+        timeList.style.display = "flex"
+        timeFormatList.style.display = "flex"
+        elAudioList.style.display = "none"
+        heroTitle.textContent = "Namoz vaqti"
+        timeInput.placeholder = "Viloyatni tanlash"
+    }
+})
+
+fetch("http://api.alquran.cloud/v1/quran/en.asad")
+.then(res => res.json())
+.then(data => {
+    const myData = data.data.surahs;
+    console.log(myData);
+    myData.forEach(item =>{
+        const clonedTemplate = elTemplate.cloneNode(true);
+        clonedTemplate.querySelector(".audio__number__desc").textContent = item.number;
+        clonedTemplate.querySelector(".audio__name").textContent = item.englishName;
+        clonedTemplate.querySelector(".audio__eng__name").textContent = item.englishNameTranslation;
+        clonedTemplate.querySelector(".audio__ar-name").textContent = item.name;
+        clonedTemplate.querySelector(".audio__ayahs").textContent = item.ayahs.length;
+        clonedTemplate.querySelector(".audio__icon").dataset.id = item.number;
+        clonedTemplate.querySelector(".audio__icon-wrap").href = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${item.number}.mp3`;
+        clonedTemplate.querySelector(".audio__icon-wrap").target = "blank";
+        newFragment.appendChild(clonedTemplate)
+    })
+    elAudioList.appendChild(newFragment)
+})
+
+
+function fetchMonthlyDefault(){
+    fetch("https://islomapi.uz/api/monthly?region=Toshkent&month=11")
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(item => {
+            console.log(item.date.split("T", 1).join(""));
+            const itemTimes = item.times;
+            let liElement = document.createElement("li");
+            liElement.classList.add("time-table-item")
+            let day = document.createElement("p")
+            day.textContent = item.weekday
+            day.classList.add("time-default")
+            
+            let date = document.createElement("p");
+            date.textContent = item.date.split("T", 1).join("");
+            date.classList.add("time-default");
+            
+            let saharlik = document.createElement("p");
+            saharlik.textContent = itemTimes.tong_saharlik;
+            saharlik.classList.add("time-default");
+            
+            let sun = document.createElement("p")
+            sun.textContent = itemTimes.quyosh
+            sun.classList.add("time-default")
+            
+            let peshin = document.createElement("p")
+            peshin.textContent = itemTimes.peshin
+            peshin.classList.add("time-default")
+            
+            let asr = document.createElement("p")
+            asr.textContent = itemTimes.asr;
+            asr.classList.add("time-default")
+            
+            let shom = document.createElement("p")
+            shom.textContent = itemTimes.shom_iftor;
+            shom.classList.add("time-default")
+            
+            let xufton = document.createElement("p")
+            xufton.textContent = itemTimes.hufton;
+            xufton.classList.add("time-default")
+            
+            liElement.appendChild(day)
+            liElement.appendChild(date)
+            liElement.appendChild(saharlik)
+            liElement.appendChild(sun)
+            liElement.appendChild(peshin)
+            liElement.appendChild(asr)
+            liElement.appendChild(shom)
+            liElement.appendChild(xufton)
+            timeTableMonthly.appendChild(liElement)    
+        });
+        
+    })
+    .catch(error => console.log(error))
+}
+fetchMonthlyDefault()
+
+
+
 function fetchMonth(region){
     fetch(`https://islomapi.uz/api/monthly?region=${region}&month=11`)
     .then(res => res.json())
@@ -375,180 +487,64 @@ function fetchMonth(region){
         headXufton.classList.add("time-default")
         headXufton.textContent = "Xufton:"
         
-        liHead.appendChild(headWeek)
-        liHead.appendChild(headDate)
-        liHead.appendChild(headMorning)
-        liHead.appendChild(headSun)
-        liHead.appendChild(headPeshin)
-        liHead.appendChild(headAsr)
-        liHead.appendChild(headShom)
-        liHead.appendChild(headXufton)
-        timeTable.appendChild(liHead)
+        liHead.appendChild(headWeek);
+        liHead.appendChild(headDate);
+        liHead.appendChild(headMorning);
+        liHead.appendChild(headSun);
+        liHead.appendChild(headPeshin);
+        liHead.appendChild(headAsr);
+        liHead.appendChild(headShom);
+        liHead.appendChild(headXufton);
+        timeTable.appendChild(liHead);
         data.forEach(item => {
             console.log(item);
             const itemTimes = item.times;
             
             let liElement = document.createElement("li");
-            liElement.classList.add("time-table-item")
-            let day = document.createElement("p")
-            day.textContent = item.weekday
-            day.classList.add("time-default")
+            liElement.classList.add("time-table-item");
+            let day = document.createElement("p");
+            day.textContent = item.weekday;
+            day.classList.add("time-default");
             
-            let date = document.createElement("p")
-            date.textContent = item.date.split(",", 1).join("")
-            date.classList.add("time-default")
+            let date = document.createElement("p");
+            date.textContent = item.date.split("T", 1).join("");
+            date.classList.add("time-default");
             
-            let saharlik = document.createElement("p")
-            saharlik.textContent = itemTimes.tong_saharlik
-            saharlik.classList.add("time-default")
+            let saharlik = document.createElement("p");
+            saharlik.textContent = itemTimes.tong_saharlik;
+            saharlik.classList.add("time-default");
             
-            let sun = document.createElement("p")
-            sun.textContent = itemTimes.quyosh
-            sun.classList.add("time-default")
+            let sun = document.createElement("p");
+            sun.textContent = itemTimes.quyosh;
+            sun.classList.add("time-default");
             
-            let peshin = document.createElement("p")
-            peshin.textContent = itemTimes.peshin
-            peshin.classList.add("time-default")
+            let peshin = document.createElement("p");
+            peshin.textContent = itemTimes.peshin;
+            peshin.classList.add("time-default");
             
-            let asr = document.createElement("p")
+            let asr = document.createElement("p");
             asr.textContent = itemTimes.asr;
-            asr.classList.add("time-default")
+            asr.classList.add("time-default");
             
-            let shom = document.createElement("p")
+            let shom = document.createElement("p");
             shom.textContent = itemTimes.shom_iftor;
-            shom.classList.add("time-default")
+            shom.classList.add("time-default");
             
-            let xufton = document.createElement("p")
+            let xufton = document.createElement("p");
             xufton.textContent = itemTimes.hufton;
-            xufton.classList.add("time-default")
+            xufton.classList.add("time-default");
             
-            liElement.appendChild(day)
-            liElement.appendChild(date)
-            liElement.appendChild(saharlik)
-            liElement.appendChild(sun)
-            liElement.appendChild(peshin)
-            liElement.appendChild(asr)
-            liElement.appendChild(shom)
-            liElement.appendChild(xufton)
-            timeTable.appendChild(liElement)    
+            liElement.appendChild(day);
+            liElement.appendChild(date);
+            liElement.appendChild(saharlik);
+            liElement.appendChild(sun);
+            liElement.appendChild(peshin);
+            liElement.appendChild(asr);
+            liElement.appendChild(shom);
+            liElement.appendChild(xufton);
+            timeTableMonthly.appendChild(liElement);    
         });
     })
     .catch(error => console.log(error))
 }
 
-function fetchMonthlyDefault(){
-    fetch("https://islomapi.uz/api/monthly?region=Toshkent&month=11")
-    .then(res => res.json())
-    .then(data => {
-        data.forEach(item => {
-            const itemTimes = item.times;
-            let liElement = document.createElement("li");
-            liElement.classList.add("time-table-item")
-            let day = document.createElement("p")
-            day.textContent = item.day
-            day.classList.add("time-default")
-            
-            let date = document.createElement("p")
-            date.textContent = item.weekday
-            date.classList.add("time-default")
-            
-            let saharlik = document.createElement("p")
-            saharlik.textContent = itemTimes.tong_saharlik
-            saharlik.classList.add("time-default")
-            
-            let sun = document.createElement("p")
-            sun.textContent = itemTimes.quyosh
-            sun.classList.add("time-default")
-            
-            let peshin = document.createElement("p")
-            peshin.textContent = itemTimes.peshin
-            peshin.classList.add("time-default")
-            
-            let asr = document.createElement("p")
-            asr.textContent = itemTimes.asr;
-            asr.classList.add("time-default")
-            
-            let shom = document.createElement("p")
-            shom.textContent = itemTimes.shom_iftor;
-            shom.classList.add("time-default")
-            
-            let xufton = document.createElement("p")
-            xufton.textContent = itemTimes.hufton;
-            xufton.classList.add("time-default")
-            
-            liElement.appendChild(day)
-            liElement.appendChild(date)
-            liElement.appendChild(saharlik)
-            liElement.appendChild(sun)
-            liElement.appendChild(peshin)
-            liElement.appendChild(asr)
-            liElement.appendChild(shom)
-            liElement.appendChild(xufton)
-            timeTableMonthly.appendChild(liElement)    
-        });
-        
-    })
-    .catch(error => console.log(error))
-}
-fetchMonthlyDefault()
-
-
-elFontSize.addEventListener("click", (evt) =>{
-    evt.preventDefault();
-    if(evt.target.matches(".font-increase")){
-        size = size + 1
-        body.style.fontSize = size + "px"
-        if(size == 20){
-            size = size - 1
-        }
-    }else if(evt.target.matches(".font-decrease")){
-        size = size - 1
-        body.style.fontSize = size + "px"
-        if(size == 10){
-            size = size + 1
-        }
-    }
-})
-
-twoOptionWrapper.addEventListener("click", (evt) => {
-    if(evt.target.matches(".site-header__surah")){
-        heroSubtitle.style.display = "none"
-        timeList.style.display = "none"
-        timeFormatList.style.display = "none"
-        heroTitle.textContent = "Suralar"
-        timeInput.placeholder = "suralarni qidirish"
-        elAudioList.style.display = "flex"
-    }else if(evt.target.matches(".site-header__time")){
-        heroSubtitle.style.display = "block"
-        timeList.style.display = "flex"
-        timeFormatList.style.display = "flex"
-        elAudioList.style.display = "none"
-    }
-})
-
-
-fetch("http://api.alquran.cloud/v1/quran/en.asad")
-.then(res => res.json())
-.then(data => {
-    const myData = data.data.surahs;
-    myData.forEach(item =>{
-        const clonedTemplate = elTemplate.cloneNode(true);
-        clonedTemplate.querySelector(".audio__number__desc").textContent = item.number;
-        clonedTemplate.querySelector(".audio__name").textContent = item.englishName;
-        clonedTemplate.querySelector(".audio__eng__name").textContent = item.englishNameTranslation;
-        clonedTemplate.querySelector(".audio__ar-name").textContent = item.name;
-        clonedTemplate.querySelector(".audio__ayahs").textContent = item.ayahs.length;
-        clonedTemplate.querySelector(".audio__icon").dataset.id = item.number;
-        clonedTemplate.querySelector(".audio__icon-wrap").href = "https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/1.mp3";
-        
-        newFragment.appendChild(clonedTemplate)
-    })
-    elAudioList.appendChild(newFragment)
-})
-
-elAudioList.addEventListener("click", (evt) =>{
-    evt.preventDefault();
-    let findedAudio = evt.target.dataset.id;
-    `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${findedAudio}.mp3`
-
-})
