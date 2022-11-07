@@ -450,7 +450,7 @@ function fetchMonth(region){
     .then(res => res.json())
     .then(data => {
         let liHead = document.createElement("li")
-        liHead.classList.add("time-table-item")
+        liHead.classList.add("time-table-item");
         
         let headWeek = document.createElement("p")
         headWeek.classList.add("time-default")
