@@ -54,6 +54,12 @@ const newFragment = new DocumentFragment();
 // Nasheed 
 const nasheedList = document.querySelector(".nasheed__list");
 
+// Entrance Modal
+const elEntrance = document.querySelector(".entrance");
+const elEntranceBtn = elEntrance.querySelector(".entrance__btn");
+const record = new webkitSpeechRecognition()
+record.lang = "en-EN"
+console.log(record);
 
 function modalEvents(){
     // Settings Modal
@@ -105,7 +111,7 @@ timeForm.addEventListener("submit", (evt) =>{
     const timeInputValue = timeInput.value.trim();
     fetchTime(timeInputValue);
     fetchWeek(timeInputValue);
-    // fetchMonth(timeInputValue);
+    fetchMonth(timeInputValue);
 })
 
 function fetchTime(region){
@@ -557,3 +563,17 @@ function fetchMonth(region){
     .catch(error => console.log(error))
 }
 
+record.onresult = function(evt){
+    console.log(evt);
+    const command = evt["results"][0][0]["transcript"];
+    console.log(command);
+    if(command.includes("Bismillah")){
+        elEntrance.style.display = "none";
+    }
+}
+
+elEntranceBtn.addEventListener("click", function(evt){
+    evt.preventDefault();
+    console.log("Recording started");
+    record.start()
+})
