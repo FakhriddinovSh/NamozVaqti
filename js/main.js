@@ -222,7 +222,6 @@ function fetchWeek(region){
         liHead.appendChild(headXufton);
         timeTable.appendChild(liHead);
         data.forEach(item => {
-            console.log(item);
             const itemTimes = item.times;
             
             let liElement = document.createElement("li");
@@ -355,7 +354,7 @@ twoOptionWrapper.addEventListener("click", (evt) => {
         timeList.style.display = "none"
         timeFormatList.style.display = "none"
         heroTitle.textContent = "Suralar"
-        timeInput.placeholder = "Suralarni qidirish"
+        timeForm.style.display = "none"
         elAudioList.style.display = "flex"
     }else if(evt.target.matches(".site-header__time")){
         heroSubtitle.style.display = "block"
@@ -363,6 +362,7 @@ twoOptionWrapper.addEventListener("click", (evt) => {
         timeFormatList.style.display = "flex"
         elAudioList.style.display = "none"
         heroTitle.textContent = "Namoz vaqti"
+        timeForm.style.display = "block"
         timeInput.placeholder = "Viloyatni tanlash"
     }
 })
@@ -371,7 +371,6 @@ fetch("http://api.alquran.cloud/v1/quran/en.asad")
 .then(res => res.json())
 .then(data => {
     const myData = data.data.surahs;
-    console.log(myData);
     myData.forEach(item =>{
         const clonedTemplate = elTemplate.cloneNode(true);
         clonedTemplate.querySelector(".audio__number__desc").textContent = item.number;
@@ -393,7 +392,6 @@ function fetchMonthlyDefault(){
     .then(res => res.json())
     .then(data => {
         data.forEach(item => {
-            console.log(item.date.split("T", 1).join(""));
             const itemTimes = item.times;
             let liElement = document.createElement("li");
             liElement.classList.add("time-table-item")
@@ -451,7 +449,6 @@ function fetchMonth(region){
     fetch(`https://islomapi.uz/api/monthly?region=${region}&month=11`)
     .then(res => res.json())
     .then(data => {
-        timeTable.innerHTML = ""
         let liHead = document.createElement("li")
         liHead.classList.add("time-table-item")
         
@@ -497,7 +494,7 @@ function fetchMonth(region){
         liHead.appendChild(headXufton);
         timeTable.appendChild(liHead);
         data.forEach(item => {
-            console.log(item);
+            timeTableMonthly.innerHTML = ""
             const itemTimes = item.times;
             
             let liElement = document.createElement("li");
