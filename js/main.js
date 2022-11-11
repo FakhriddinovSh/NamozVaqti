@@ -37,7 +37,7 @@ const timeXufton = document.querySelector(".time-xufton");
 const timeName = document.querySelector(".time-name");
 const heroSubtitle = document.querySelector(".hero__subtitle");
 const timeFormatList = document.querySelector(".time-format-list")
-const heroTitle = document.querySelector(".hero__title")
+const heroTitle = document.querySelector(".hero__title");
 
 // Font size
 const elFontSize = document.querySelector(".font-size");
@@ -55,56 +55,61 @@ const newFragment = new DocumentFragment();
 const nasheedList = document.querySelector(".nasheed__list");
 
 // Entrance Modal
-const elEntrance = document.querySelector(".entrance");
-const elEntranceBtn = elEntrance.querySelector(".entrance__btn");
-const record = new webkitSpeechRecognition()
-record.lang = "en-EN"
-console.log(record);
+// const elEntrance = document.querySelector(".entrance");
+// const elEntranceBtn = elEntrance.querySelector(".entrance__btn");
+// const record = new webkitSpeechRecognition()
+// record.lang = "en-EN"
+// console.log(record);
 
 function modalEvents(){
     // Settings Modal
     elSiteHeaderSettings.addEventListener("click", function(){
         settings.classList.add("settings--active")
-    })
+    });
     
     settingsButton.addEventListener("click", () => {
-        settings.classList.remove("settings--active")
-    })
+        settings.classList.remove("settings--active");
+    });
     
     // Login Modal
     elSiteHeaderLogin.addEventListener("click", ()=>{
-        login.classList.add("login--active")
-    })
+        login.classList.add("login--active");
+    });
     
     loginClose.addEventListener("click", () =>{
-        login.classList.remove("login--active")    
-    })
+        login.classList.remove("login--active");
+    });
     
     registerBtn.addEventListener("click", () =>{
-        loginTitle.textContent = "Register"
-        loginForm.classList.add("login-form--active")
-        registerForm.classList.add("register-form--active")
-    })
+        loginTitle.textContent = "Register";
+        loginForm.classList.add("login-form--active");
+        registerForm.classList.add("register-form--active");
+    });
     
     themeSwitcher.addEventListener("click", (evt) =>{
         if(evt.target.matches(".theme-moon")){
-            body.classList.add("theme-button")
-            body.classList.remove("theme-button-dark")
-            window.localStorage.setItem("mode", "moon")
+            body.classList.add("theme-button");
+            body.classList.remove("theme-button-dark");
+            window.localStorage.setItem("mode", "theme-button");
         }
         else if(evt.target.matches(".theme-star")){
-            body.classList.add("theme-button-dark")
-            body.classList.remove("theme-button")
-            window.localStorage.setItem("mode", "dark")
+            body.classList.add("theme-button-dark");
+            body.classList.remove("theme-button");
+            window.localStorage.setItem("mode", "theme-button-dark");
         }
         else if(evt.target.matches(".theme-default")){
-            body.classList.remove("theme-button")
-            body.classList.remove("theme-button-dark")
-            window.localStorage.setItem("mode", "default")
+            body.classList.remove("theme-button");
+            body.classList.remove("theme-button-dark");
+            window.localStorage.setItem("mode", "theme-default");
         }
     })
 }
 modalEvents()
+
+const userMode = localStorage.getItem("mode")
+body.classList.add(userMode) 
+
+
 
 timeForm.addEventListener("submit", (evt) =>{
     evt.preventDefault();
@@ -337,8 +342,6 @@ function fetchWeeklyDefault(){
 fetchWeeklyDefault()
 
 
-
-
 elFontSize.addEventListener("click", (evt) =>{
     evt.preventDefault();
     if(evt.target.matches(".font-increase")){
@@ -520,31 +523,24 @@ function fetchMonth(region){
             let day = document.createElement("p");
             day.textContent = item.weekday;
             day.classList.add("time-default");
-            
             let date = document.createElement("p");
             date.textContent = item.date.split("T", 1).join("");
             date.classList.add("time-default");
-            
             let saharlik = document.createElement("p");
             saharlik.textContent = itemTimes.tong_saharlik;
             saharlik.classList.add("time-default");
-            
             let sun = document.createElement("p");
             sun.textContent = itemTimes.quyosh;
             sun.classList.add("time-default");
-            
             let peshin = document.createElement("p");
             peshin.textContent = itemTimes.peshin;
             peshin.classList.add("time-default");
-            
             let asr = document.createElement("p");
             asr.textContent = itemTimes.asr;
             asr.classList.add("time-default");
-            
             let shom = document.createElement("p");
             shom.textContent = itemTimes.shom_iftor;
             shom.classList.add("time-default");
-            
             let xufton = document.createElement("p");
             xufton.textContent = itemTimes.hufton;
             xufton.classList.add("time-default");
@@ -563,17 +559,21 @@ function fetchMonth(region){
     .catch(error => console.log(error))
 }
 
-record.onresult = function(evt){
-    console.log(evt);
-    const command = evt["results"][0][0]["transcript"];
-    console.log(command);
-    if(command.includes("Bismillah")){
-        elEntrance.style.display = "none";
-    }
-}
 
-elEntranceBtn.addEventListener("click", function(evt){
-    evt.preventDefault();
-    console.log("Recording started");
-    record.start()
-})
+ 
+
+
+// record.onresult = function(evt){
+//     console.log(evt);
+//     const command = evt["results"][0][0]["transcript"];
+//     console.log(command);
+//     if(command.includes("Bismillah")){
+//         elEntrance.style.display = "none";
+//     }
+// }
+
+// elEntranceBtn.addEventListener("click", function(evt){
+//     evt.preventDefault();
+//     console.log("Recording started");
+//     record.start()
+// })
